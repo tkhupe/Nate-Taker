@@ -37,9 +37,22 @@ app.post('/api/notes', (req, res) => {
     let noteList = JSON.parse(fs.readFileSync('./db/db.json','utf8'));
     let noteId = makeId(8);
     newNote.id = noteId;
-    
+    noteList.push(newNote);
 
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteList));
+    res.json(noteList);
 
+});
+
+app.delete('/api/notes/:noteId', (req, res) => {
+    let noteList = JSON.parse(fs.readFileSync('./db/db.json','utf8'));
+    let noteId = req.params.noteId.toString();
+
+    noteList = noteList.filter(selected => {
+        return selected.id !== noteId;
+    })
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteList));
+    res.json(noteList);
 });
 
 app.listen(PORT, () => console.log('listening on port ' + PORT));
