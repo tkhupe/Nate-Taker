@@ -2,7 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const path = require('path');
 // const notesRoutes = require('./public/js/index.js');
-const index = require('./public/assets/js/index.js');
+const index = require('./Develop/public/assets/js/index.js');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
