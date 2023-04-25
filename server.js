@@ -2,7 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const path = require('path');
 // const notesRoutes = require('./public/js/index.js');
-const index = require('./Develop/public/assets/js/index.js');
+// const index = require('./public/assets/js/index.js');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -22,7 +22,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use('/api', index);
-app.use('/api', notesRoutes)
+// app.use('/api', notesRoutes)
 
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
