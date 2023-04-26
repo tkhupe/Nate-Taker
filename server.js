@@ -44,7 +44,8 @@ app.post('/api/notes', (req, res) => {
     noteList.push(newNote);
 
     fs.writeFileSync('./db/db.json', JSON.stringify(noteList));
-    res.json(noteList);
+    return res.json(noteList);
+
 
 });
 
@@ -61,7 +62,7 @@ app.delete('/api/notes/:noteId', (req, res) => {
 
 app.listen(PORT, () => console.log('listening on port ' + PORT));
 
-module.exports = {
-    getNotes: '/api/notes',
-    deleteNote: '/api/notes/:noteId'
-  };
+// module.exports = {
+//     getNotes: '/api/notes',
+//     deleteNote: '/api/notes/:noteId'
+//   };
